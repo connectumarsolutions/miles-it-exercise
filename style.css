@@ -1,0 +1,652 @@
+/*
+   MILES IT — WEBSITE DEVELOPER EXERCISE
+   Author  : Muhammad Umar
+   File    : style.css
+   Version : 1.0
+*/
+
+
+/*
+   1. CSS VARIABLES & BASE STYLES
+*/
+
+:root {
+    --color-brown:       #8B6914;
+    --color-brown-hover: #6e5210;
+    --color-dark:        #1a1a1a;
+    --color-dark-2:      #2a2a2a;
+    --color-dark-3:      #333333;
+    --color-text:        #444444;
+    --color-light-text:  #777777;
+    --color-border:      #e0ddd6;
+    --color-bg-grey:     #f5f5f5;
+
+    --font-heading: 'Oswald', sans-serif;
+    --font-body:    'Source Sans 3', sans-serif;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--color-text);
+    background-color: #ffffff;
+    line-height: 1.6;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* 2. REUSABLE UTILITIES */
+
+.section-padding {
+    padding: 72px 0;
+}
+
+.bg-light-grey {
+    background-color: var(--color-bg-grey);
+}
+
+.section-heading {
+    font-family: var(--font-heading);
+    font-size: 35px;
+    font-weight: 400;
+    color: var(--color-dark);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 18px;
+}
+
+.section-text {
+    font-size: 18px;
+    color: var(--color-light-text);
+    line-height: 1.8;
+    margin-bottom: 0;
+}
+
+.section-image {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 0px;
+}
+
+/* Outlined Button (used in dark sections) */
+.btn-outline-custom {
+    display: inline-block;
+    border: 2px solid #ffffff;
+	border-radius:8px;
+    color: #ffffff;
+    padding: 11px 32px;
+    font-family: var(--font-heading);
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: background-color 0.25s ease, color 0.25s ease,
+	
+}
+
+.btn-outline-custom:hover {
+    background-color: #ffffff;
+    color: var(--color-dark);
+}
+
+
+/* 3. NAVBAR */
+
+#main-navbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    background-color: transparent;
+    padding: 18px 0;
+    transition: background-color 0.3s ease, padding 0.3s ease;
+}
+
+/* Navbar becomes solid dark on scroll (via JS) */
+#main-navbar.navbar-scrolled {
+    position: fixed;
+    background-color: rgba(26, 26, 26, 0.96);
+    padding: 12px 0;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+}
+
+#main-navbar .navbar-brand {
+    font-family: var(--font-heading);
+    font-size: 40px;
+    font-weight: 400;
+    color: #ffffff;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+#main-navbar .nav-link {
+    font-family: var(--font-body);
+    font-size: 20px;
+    font-weight: 400;
+    color: #ffffff !important;
+    letter-spacing: 0.5px;
+    padding: 6px 14px;
+    transition: color 0.2s ease;
+}
+
+#main-navbar .nav-link:hover {
+    color: var(--color-brown) !important;
+}
+
+/* Mobile: hamburger border */
+#main-navbar .navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+#main-navbar .navbar-toggler-icon {
+    filter: brightness(0) invert(1);
+}
+
+/* Mobile menu background */
+@media (max-width: 991px) {
+    #main-navbar .navbar-collapse {
+        background-color: rgba(26, 26, 26, 0.97);
+        padding: 12px 16px;
+        margin-top: 10px;
+    }
+}
+
+
+/* 4. HERO SECTION */
+
+#hero {
+    position: relative;
+    width: 100%;
+    min-height: 700px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-dark-3);
+    overflow: hidden;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background-image: url('media/shaking hands-min.jpg');
+    background-size: cover;
+    background-position: center top;
+    opacity: 0.20;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 140px 20px 80px;
+    max-width: 780px;
+}
+
+.hero-title {
+    font-family: var(--font-heading);
+    font-size: clamp(48px, 4.5vw, 2.8rem);
+    font-weight: 400;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 28px;
+    line-height: 1.2;
+}
+
+.hero-quote {
+    
+    font-size: 18px;
+    color: #fff;
+    line-height: 1.75;
+    margin-bottom: 10px;
+}
+
+.hero-author {
+    font-size: 18px;
+    color: #fff;
+    margin-bottom: 0;
+}
+
+
+/* 5. SERVICES — ICON CARDS */
+
+#services {
+    padding: 80px 0px 0px 0px;
+    background-color: #ffffff;
+}
+
+.service-card {
+    text-align: center;
+	padding: 0 20px;
+}
+
+.service-icon {
+    width: 54px;
+    height: 54px;
+    object-fit: contain;
+    margin-bottom: 16px;
+	margin-left: auto;
+    margin-right: auto;
+
+}
+
+.service-title {
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--color-dark);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 12px;
+    line-height: 1.3;
+}
+
+.service-text {
+    font-size: 16px;
+    color: var(--color-light-text);
+    line-height: 1.7;
+    margin-bottom: 0;
+}
+
+
+/* 6. GOALS SECTION */
+
+#goals {
+    padding: 80px 0px 0px 0px;
+    background-color: #ffffff;
+}
+
+
+/* 7. STRATEGY SECTION */
+
+#strategy {
+    padding: 72px 0;
+    background-color: #ffffff;
+}
+
+
+/* 8. DARK CTA */
+
+#cta-dark {
+    position: relative;
+    padding: 80px 0;
+    background-color: var(--color-dark-3);
+    overflow: hidden;
+}
+
+.cta-dark-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('media/businessmen-min.jpg');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.28;
+}
+
+.cta-dark-content {
+    position: relative;
+    z-index: 2;
+}
+
+.cta-dark-title {
+    font-family: var(--font-heading);
+    font-size: clamp(35px, 3.5vw, 2rem);
+    font-weight: 400;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 18px;
+}
+
+.cta-dark-text {
+    font-size: 18px;
+    color: #bbbbbb;
+    line-height: 1.75;
+    max-width: 640px;
+    margin-bottom: 30px;
+}
+
+
+/* 9. STATS + PLAN SECTION */
+
+#stats {
+   padding: 80px 0px 0px 0px;
+    background-color: #ffffff;
+}
+
+.stat-item {
+   /* display: flex; */
+    align-items: center;
+    gap: 14px;
+}
+
+.stat-icon {
+    width: 52px;
+    height: 52px;
+    object-fit: contain;
+    flex-shrink: 0;
+	margin-left: auto;
+    margin-right: auto;
+	margin-bottom:10px;
+
+}
+
+.stat-label {
+    font-family: var(--font-heading);
+    font-size: 16px;
+    font-weight: 400;
+    color: #8a6b52;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 0;
+	text-align: center;
+}
+
+
+/* 10. TESTIMONIALS */
+
+#testimonials {
+    padding: 72px 0;
+}
+/*
+.testimonial-card {
+    background-color: #ffffff;
+    border: 1px solid var(--color-border);
+    padding: 32px;
+    height: 100%;
+}
+*/
+.testimonial-title {
+    font-family: var(--font-heading);
+    font-size: 25px;
+    font-weight: 400;
+    color: var(--color-dark);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 14px;
+}
+
+.quote-icon {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    margin-bottom: -24px;
+	z-index:0 !important;
+	opacity:0.20;
+}
+
+.testimonial-text {
+    font-size: 16px;
+    color: var(--color-light-text);
+    line-height: 1.75;
+    margin-bottom: 22px;
+	z-index:1 !important;
+}
+
+.testimonial-author {
+    gap: 14px;
+}
+
+.author-photo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.author-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.author-name {
+    font-family: var(--font-heading);
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--color-dark);
+    margin-bottom: 2px;
+}
+
+.author-role {
+    font-size: 0.78rem;
+    color: var(--color-light-text);
+    margin-bottom: 0;
+}
+
+
+/* 11. FINAL CTA NEXT LEVEL */
+
+#cta-final {
+    position: relative;
+    padding: 100px 0;
+    background-color: var(--color-dark-2);
+    overflow: hidden;
+    text-align: center;
+}
+
+.cta-final-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('media/climbing stairs-min.jpg');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.50;
+	
+}
+
+.cta-final-content {
+    position: relative;
+    z-index: 2;
+}
+
+.cta-final-title {
+    font-family: var(--font-heading);
+    font-size: clamp(35px, 3.5vw, 2.2rem);
+    font-weight: 400;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 14px;
+}
+
+.cta-final-text {
+    font-size:18px;
+    color: #fff;
+	width: 60%;
+	margin-left:auto;
+	margin-right:auto;
+    margin-bottom: 32px;
+}
+
+
+/* 12. FOOTER */
+
+#footer {
+    background-color: var(--color-dark);
+    padding: 36px 0 24px;
+}
+
+.footer-social {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.footer-social a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    border: 1px solid #444444;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 0.8rem;
+    font-weight: 400;
+    transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.footer-social a:hover {
+    color: var(--color-brown);
+    border-color: var(--color-brown);
+}
+
+.footer-copy {
+    font-size: 16px;
+    color: #666666;
+    margin-bottom: 6px;
+}
+
+.footer-links {
+    font-size: 14px;
+    color: #555555;
+    margin-bottom: 0;
+}
+
+.footer-links a {
+    color: #555555;
+    transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+    color: var(--color-brown);
+}
+
+
+/* 13. RESPONSIVE TABLETS (max 768px) */
+
+@media (max-width: 768px) {
+
+   #hero {
+       min-height: 500px;
+    }
+    .section-padding,
+    #services,
+    #goals,
+    #stats,
+	{
+       padding: 50px 0px 0px 0px;
+    }
+ .section-padding,
+    #strategy, #testimonials{
+       padding: 50px 0px 50px 0px;
+    }
+	
+	.section-heading, .cta-dark-title, .cta-final-title {
+        font-size: 30px;
+    }
+    #cta-dark {
+        padding: 50px 0;
+    }
+
+    #cta-final {
+        padding: 50px 0;
+    }
+
+    .section-image {
+        height: 220px;
+        margin-bottom: 8px;
+    }
+
+    .hero-content {
+        padding: 120px 20px 60px;
+    }
+
+    .cta-dark-text {
+        max-width: 100%;
+    }
+
+}
+
+
+/* 14. RESPONSIVE MOBILE (max 576px) */
+
+   @media (max-width: 576px) {
+	#hero {
+       min-height: 500px;
+    }
+   .hero-quote, .hero-author, .section-text, .cta-dark-text { 
+      font-size: 16px ;
+    }
+
+   #main-navbar .navbar-brand {
+	  font-size: 30px;
+    }
+
+   .hero-title {
+    font-size: 35px;
+    }
+
+    .hero-content {
+        padding: 100px 16px 52px;
+    }
+
+    .section-heading, .cta-dark-title, .cta-final-title {
+        font-size: 25px;
+    }
+    .section-padding,
+    #strategy, #testimonials{
+       padding: 50px 0px 30px 0px;
+    }
+	
+	
+    .cta-dark-title,
+    .cta-final-title {
+        letter-spacing: 1px;
+    }
+
+    .service-card {
+        margin-bottom: 0px;
+    }
+
+    .testimonial-card {
+        padding: 0px;
+        margin-bottom: 20px;
+    }
+
+    .stat-item {
+        margin-bottom: 8px;
+    }
+	
+	.cta-final-text {
+    font-size: 16px;
+    color: #fff;
+    width: 100%;
+}
+
+    .footer-social {
+        gap: 8px;
+    }
+
+}
