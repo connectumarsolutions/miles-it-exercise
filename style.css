@@ -198,7 +198,7 @@ ul {
 .hero-overlay {
     position: absolute;
     inset: 0;
-    background-image: url('media/shaking hands-min.jpg');
+    background-image: url('Media/shaking hands-min.jpg');
     background-size: cover;
     background-position: center top;
     opacity: 0.20;
@@ -306,7 +306,7 @@ ul {
 .cta-dark-bg {
     position: absolute;
     inset: 0;
-    background-image: url('media/businessmen-min.jpg');
+    background-image: url('Media/businessmen-min.jpg');
     background-size: cover;
     background-position: center;
     opacity: 0.28;
@@ -457,7 +457,7 @@ ul {
 .cta-final-bg {
     position: absolute;
     inset: 0;
-    background-image: url('media/climbing stairs-min.jpg');
+    background-image: url('Media/climbing stairs-min.jpg');
     background-size: cover;
     background-position: center;
     opacity: 0.50;
